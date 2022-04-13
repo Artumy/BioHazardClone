@@ -5,10 +5,12 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private CellType _type;
+    [SerializeField] private int _capacity;
 
     private SpriteRenderer _spriteRenderer;
 
     public CellType Type => _type;
+    public int Capacity => _capacity;
 
     private void Awake()
     {
