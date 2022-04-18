@@ -41,6 +41,8 @@ public class TapOnCells : MonoBehaviour
     private void OnMouseUp()
     {
         _lineDirection.EndDrawLine();
+        _cell.SpawnEntity(Camera.main.ScreenToWorldPoint(
+                    new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)));
     }
 
 
