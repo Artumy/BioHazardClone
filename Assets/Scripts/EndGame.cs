@@ -3,17 +3,19 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    private Cell[] _cells;
     private void Start()
     {
         InvokeRepeating("CheckCell", 5, 3);
+        _cells = FindObjectsOfType<Cell>();
     }
 
     private void CheckCell()
     {
-        var cells = FindObjectsOfType<Cell>().Where(cell => cell.Type != Cell.CellType.None).ToArray();
-        for(int i = 0; i < cells.Length - 1; i++)
+        var capturedCells = _cells.Where(cell => cell.Type != Cell.CellType.None).ToArray();
+        for(int i = 0; i < capturedCells.Length - 1; i++)
         {           
-            if(cells[i].Type != cells[i+1].Type)
+            if(capturedCells[i].Type != capturedCells[i+1].Type)
                 return;            
         }
 
@@ -22,6 +24,9 @@ public class EndGame : MonoBehaviour
 
     private void FinishGame()
     {
+        var levelCompleted = PlayerPrefs.GetInt("LevelCompleted");
+        PlayerPrefs.SetInt("LevelCompleted", levelCompleted + 1);
+        CancelInvoke();
         Debug.Log("Finish");
     }
 }

@@ -23,10 +23,12 @@ public class PauseMenu : MonoBehaviour
     public void RestartGame()
     {
         EditorSceneManager.LoadScene(EditorSceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void OpenMainMenu()
     {
         EditorSceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 }
