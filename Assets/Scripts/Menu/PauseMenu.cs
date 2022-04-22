@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -22,13 +22,13 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        EditorSceneManager.LoadScene(EditorSceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
 
     public void OpenMainMenu()
     {
-        EditorSceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
 }

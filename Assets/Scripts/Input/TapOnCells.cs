@@ -28,16 +28,6 @@ public class TapOnCells : MonoBehaviour
         _lineDirection.DrawLine();
     }
 
-    private void OnMouseEnter()
-    {
-        _spriteRenderer.enabled = false;
-    }
-
-    private void OnMouseExit()
-    {
-        _spriteRenderer.enabled = true;
-    }
-
     private void OnMouseUp()
     {
         if (_cell.Type == Cell.CellType.Player)

@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour
     
     public void StartGame(int indexScene)
     {
-        EditorSceneManager.LoadScene(indexScene);
+        SceneManager.LoadScene(indexScene);
     }
 
     public void OpenExitMenu()
