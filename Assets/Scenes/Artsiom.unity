@@ -200,7 +200,7 @@ Animator:
   m_GameObject: {fileID: 193718673}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61bd2e12329bc5645a4ab63bf3e6396e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1f85c46f17a4cb4988098662dd90a70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -390,7 +390,7 @@ Animator:
   m_GameObject: {fileID: 411997179}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61bd2e12329bc5645a4ab63bf3e6396e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1f85c46f17a4cb4988098662dd90a70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -598,7 +598,7 @@ Animator:
   m_GameObject: {fileID: 557723666}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61bd2e12329bc5645a4ab63bf3e6396e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1f85c46f17a4cb4988098662dd90a70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -670,6 +670,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768200518379357387, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.07476807
+      objectReference: {fileID: 0}
     - target: {fileID: 3768200518379357388, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
       propertyPath: m_Name
       value: LineDrawer
@@ -849,6 +877,10 @@ PrefabInstance:
     - target: {fileID: 4349190175242104027, guid: 6c7e72a0c8bb3a44ea9a144a4bf3dd8f, type: 3}
       propertyPath: _capacity
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349190175242104027, guid: 6c7e72a0c8bb3a44ea9a144a4bf3dd8f, type: 3}
+      propertyPath: _repeatTime
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4349190175242104027, guid: 6c7e72a0c8bb3a44ea9a144a4bf3dd8f, type: 3}
       propertyPath: _maxCapacity
@@ -1078,7 +1110,7 @@ Animator:
   m_GameObject: {fileID: 1433699632}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61bd2e12329bc5645a4ab63bf3e6396e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1f85c46f17a4cb4988098662dd90a70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1231,7 +1263,7 @@ Animator:
   m_GameObject: {fileID: 1573844875}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 61bd2e12329bc5645a4ab63bf3e6396e, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1f85c46f17a4cb4988098662dd90a70, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
