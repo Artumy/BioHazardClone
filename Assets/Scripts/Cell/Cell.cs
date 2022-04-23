@@ -12,6 +12,10 @@ public class Cell : MonoBehaviour
     [SerializeField] private float _repeatTime = 1f;
     [SerializeField] private GameObject _prefabEntity;
 
+    [SerializeField] private Color _playerColor;
+    [SerializeField] private Color _enemyColor;
+    [SerializeField] private Color _noneColor;
+
     private SpriteRenderer _spriteRenderer;
     private float _radius;
     private float _currentTime;
@@ -87,15 +91,15 @@ public class Cell : MonoBehaviour
     {
         if (_type == CellType.None)
         {
-            _spriteRenderer.color = Color.gray;
+            _spriteRenderer.color = _noneColor;
         }
         else if (_type == CellType.Player)
         {
-            _spriteRenderer.color = Color.green;
+            _spriteRenderer.color = _playerColor;
         }
         else
         {
-            _spriteRenderer.color = Color.red;
+            _spriteRenderer.color = _enemyColor;
         }
     }
 
