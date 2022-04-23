@@ -32,7 +32,7 @@ public class TapOnCells : MonoBehaviour
     {
         if (_cell.Type == Cell.CellType.Player)
         {
-            _cell.SpawnEntity();
+            _cell.SpawnEntity(Camera.main.ScreenToWorldPoint(Input.mousePosition));
             _lineDirection.EndDrawLine();
         }
     }

@@ -23,9 +23,12 @@ public class ButtonLevel : MonoBehaviour
     private void Awake()
     {
         _menu = GameObject.Find("Canvas").GetComponent<Menu>();
-        var levelCompleted = PlayerPrefs.GetInt("LevelCompleted");
+        var openLevel = PlayerPrefs.GetInt("OpenLevel");
+        if (openLevel == 0)
+            openLevel = 1;
+
         var button = GetComponent<Button>();
-        SetState(levelCompleted);
+        SetState(openLevel);
         switch (_state)
         {
             case State.Close:
@@ -43,13 +46,11 @@ public class ButtonLevel : MonoBehaviour
         }
     }    
 
-    private void SetState(int levelCompleted)
+    private void SetState(int openLevel)
     {
-        levelCompleted += 1;
-
-        if (levelCompleted - _numberLevel > 0)
+        if (openLevel - _numberLevel > 0)
             _state = State.Passed;
-        else if (levelCompleted - _numberLevel < 0)
+        else if (openLevel - _numberLevel < 0)
             _state = State.Close;
         else
             _state = State.Open;

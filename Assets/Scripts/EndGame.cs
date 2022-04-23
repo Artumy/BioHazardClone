@@ -1,8 +1,11 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndGame : MonoBehaviour
 {
+    [SerializeField] private GameObject _endMenu;
+
     private Cell[] _cells;
     private void Start()
     {
@@ -24,9 +27,8 @@ public class EndGame : MonoBehaviour
 
     private void FinishGame()
     {
-        var levelCompleted = PlayerPrefs.GetInt("LevelCompleted");
-        PlayerPrefs.SetInt("LevelCompleted", levelCompleted + 1);
+        PlayerPrefs.SetInt("OpenLevel", SceneManager.GetActiveScene().buildIndex + 1);
         CancelInvoke();
-        Debug.Log("Finish");
+        _endMenu.SetActive(true);
     }
 }

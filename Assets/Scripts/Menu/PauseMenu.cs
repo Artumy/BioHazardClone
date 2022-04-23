@@ -5,6 +5,14 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseWindow;
     [SerializeField] private GameObject _pauseButton;
+    [SerializeField] private GameObject _nextLevelButton;
+
+    public void Start()
+    {
+        var index = SceneManager.GetActiveScene().buildIndex;
+        if (index == SceneManager.sceneCount - 1)
+            _nextLevelButton.SetActive(false);
+    }
 
     public void ResumeGame()
     {
@@ -30,5 +38,10 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

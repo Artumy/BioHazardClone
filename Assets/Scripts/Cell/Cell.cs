@@ -101,16 +101,15 @@ public class Cell : MonoBehaviour
 
     private void ProduceEntity() => Capacity++;
 
-    private RaycastHit2D[] GetHits()
+    private RaycastHit2D[] GetHits(Vector3 point)
     {
-        var point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         var directionRay = (Vector2)(point - transform.position);
         return Physics2D.RaycastAll(transform.position, directionRay, directionRay.magnitude);
     }
 
-    public void SpawnEntity()
+    public void SpawnEntity(Vector3 point)
     {
-        var hits = GetHits();
+        var hits = GetHits(point);
         if (hits.Length > 1)
         {
             var count = _capacity / 2;
