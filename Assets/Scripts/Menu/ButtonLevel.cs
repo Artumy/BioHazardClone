@@ -22,7 +22,7 @@ public class ButtonLevel : MonoBehaviour
 
     private void Awake()
     {
-        _menu = GameObject.Find("Canvas").GetComponent<Menu>();
+        _menu = FindObjectOfType<Menu>();
         var openLevel = PlayerPrefs.GetInt("OpenLevel");
         if (openLevel == 0)
             openLevel = 1;
@@ -37,18 +37,18 @@ public class ButtonLevel : MonoBehaviour
                 break;
             case State.Open:
                 _image.enabled = false;
-                button.onClick.AddListener(() => _menu.StartGame(_numberLevel));
+                button.onClick.AddListener(() => _menu.StartGame(_numberLevel - 1));
                 break;
             case State.Passed:
                 _image.sprite = _passedSprite;
-                button.onClick.AddListener(() => _menu.StartGame(_numberLevel));
+                button.onClick.AddListener(() => _menu.StartGame(_numberLevel - 1));
                 break;
         }
     }    
 
     private void SetState(int openLevel)
     {
-        if (openLevel - _numberLevel > 0)
+        if (openLevel - _numberLevel >= 1)
             _state = State.Passed;
         else if (openLevel - _numberLevel < 0)
             _state = State.Close;
