@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 755b78bfa8534794bbf514ec768c1469, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.74509805}
   m_FlipX: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _capacity: 50
-  _maxCapacity: 60
+  _maxCapacity: 10
   _repeatTime: 1
   _prefabEntity: {fileID: 1286391245039092086, guid: eedb640f643506243a21aecc4a3203e1, type: 3}
   _playerColor: {r: 0.18431373, g: 1, b: 0, a: 1}
@@ -238,7 +238,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!50 &7516209271632416500
 Rigidbody2D:
   serializedVersion: 4

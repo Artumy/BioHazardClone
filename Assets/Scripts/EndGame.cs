@@ -7,10 +7,12 @@ public class EndGame : MonoBehaviour
     [SerializeField] private GameObject _endMenu;
 
     private Cell[] _cells;
+    private Canvas _canvas;
     private void Start()
     {
         InvokeRepeating("CheckCell", 5f, 3f);
         _cells = FindObjectsOfType<Cell>();
+        _canvas = FindObjectOfType<Canvas>();
     }
 
     private void CheckCell()
@@ -30,5 +32,6 @@ public class EndGame : MonoBehaviour
         PlayerPrefs.SetInt("OpenLevel", SceneManager.GetActiveScene().buildIndex + 1);
         CancelInvoke();
         _endMenu.SetActive(true);
+        _canvas.sortingOrder = 10;
     }
 }

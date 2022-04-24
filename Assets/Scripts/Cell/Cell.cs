@@ -63,7 +63,7 @@ public class Cell : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(_capacity == 0)
+        if (_capacity == 0)
         {
             if (collision.gameObject.tag == "Player")
                 _type = CellType.Player;
@@ -105,20 +105,80 @@ public class Cell : MonoBehaviour
 
     private void ProduceEntity() => Capacity++;
 
-    private RaycastHit2D[] GetHits(Vector3 point)
+    //private RaycastHit2D[] GetHits(Vector3 point)
+    //{
+    //    var directionRay = (Vector2)(point - transform.position);
+    //    return Physics2D.RaycastAll(transform.position, directionRay, directionRay.magnitude);
+    //}
+
+    private List<RaycastHit2D> GetHits(Vector3 point)
     {
+        List<RaycastHit2D> hits = new List<RaycastHit2D>();
+        RaycastHit2D[] hit;
+        Vector2 startRayPosition = transform.position;
         var directionRay = (Vector2)(point - transform.position);
-        return Physics2D.RaycastAll(transform.position, directionRay, directionRay.magnitude);
+
+        // Set correct directionRay and add colliders from center cell to point
+        startRayPosition = transform.position;
+        hit = Physics2D.RaycastAll(startRayPosition, directionRay, directionRay.magnitude);
+        for (int i = 0; i < hit.Length; i++)
+            hits.Add(hit[i]);
+        directionRay = (Vector2)(hit[hit.Length - 1].transform.position - transform.position);
+
+        // Set the target collider
+        RaycastHit2D target = hit[hit.Length - 1];
+
+        // Set colliders from two borders of the circle
+        if ((directionRay.x < 0 && directionRay.y < 0) || (directionRay.x > 0 && directionRay.y > 0))
+        {
+            hit = GetRayColliders(startRayPosition.x - 0.5f, startRayPosition.y + 0.5f, directionRay);
+            for (int i = 0; i < hit.Length; i++)
+                hits.Add(hit[i]);
+            hit = GetRayColliders(startRayPosition.x + 0.5f, startRayPosition.y - 0.5f, directionRay);
+            for (int i = 0; i < hit.Length; i++)
+                hits.Add(hit[i]);
+        }
+        else
+        {
+            hit = GetRayColliders(startRayPosition.x - 0.5f, startRayPosition.y - 0.5f, directionRay);
+            for (int i = 0; i < hit.Length; i++)
+                hits.Add(hit[i]);
+            hit = GetRayColliders(startRayPosition.x + 0.5f, startRayPosition.y + 0.5f, directionRay);
+            for (int i = 0; i < hit.Length; i++)
+                hits.Add(hit[i]);
+        }
+
+        // Delete duplicate the target from main array
+        for (int i = 0; i < hits.Count; i++)
+        {
+            if (hits[i].transform.name == target.transform.name)
+            {
+                hits.RemoveAt(i);
+                i--;
+            }
+
+        }
+
+        // Add target in the main 
+        hits.Add(target);
+
+        return hits;
+    }
+
+    private RaycastHit2D[] GetRayColliders(float startX, float startY, Vector2 direction)
+    {
+        Vector2 start = new Vector2(startX, startY);
+        return Physics2D.RaycastAll(start, direction, direction.magnitude);
     }
 
     public void SpawnEntity(Vector3 point)
     {
         var hits = GetHits(point);
-        if (hits.Length > 1)
+        if (hits.Count > 1)
         {
             var count = _capacity / 2;
             _capacity -= count;
-            var direction = (hits[hits.Length - 1].transform.position - transform.position);
+            var direction = (hits[hits.Count - 1].transform.position - transform.position);
             var angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             for (int i = 0; i < count; i++)
             {
@@ -127,7 +187,7 @@ public class Cell : MonoBehaviour
                 entity.tag = _type.ToString();
                 entity.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
                 var entityCollider = entity.GetComponent<Collider2D>();
-                for (int j = 0; j < hits.Length - 1; j++)
+                for (int j = 0; j < hits.Count - 1; j++)
                     Physics2D.IgnoreCollision(entityCollider, hits[j].collider);
             }
         }

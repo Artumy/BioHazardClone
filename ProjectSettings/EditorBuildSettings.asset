@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-    guid: 191aa565346f7ab4d8364009cfbf8a91
-  - enabled: 0
     path: Assets/Scenes/Gleb.unity
     guid: 350b844b4ada9f744990ca8cba71e674
   - enabled: 1
-    path: Assets/Scenes/Artsiom.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 191aa565346f7ab4d8364009cfbf8a91
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level1.unity
     guid: 162e9ce2e644a6848ac9da700af47b89
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level2.unity
+    guid: c2f04874f34cde645bb8465d4e712c5c
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level3.unity
+    guid: 6887861d0cf8d8442abd66b0474123cc
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level4.unity
+    guid: f81e3a5de2aeae8418df7c6b0968795d
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level5.unity
+    guid: 77d573fd21a7c9c4997b839251adfb45
   m_configObjects: {}

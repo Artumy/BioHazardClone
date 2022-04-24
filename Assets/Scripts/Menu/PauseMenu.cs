@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseWindow;
     [SerializeField] private GameObject _pauseButton;
+
     //[SerializeField] private GameObject _nextLevelButton;
 
     private Canvas _canvas;
@@ -31,7 +32,7 @@ public class PauseMenu : MonoBehaviour
         _pauseWindow.SetActive(true);
         _pauseButton.SetActive(false);
         Time.timeScale = 0;
-        _canvas.sortingOrder = 1;
+        _canvas.sortingOrder = 10;
     }
 
     public void RestartGame()

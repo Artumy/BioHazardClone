@@ -37,11 +37,11 @@ public class ButtonLevel : MonoBehaviour
                 break;
             case State.Open:
                 _image.enabled = false;
-                button.onClick.AddListener(() => _menu.StartGame(_numberLevel - 1));
+                button.onClick.AddListener(() => _menu.StartGame(_numberLevel));
                 break;
             case State.Passed:
                 _image.sprite = _passedSprite;
-                button.onClick.AddListener(() => _menu.StartGame(_numberLevel - 1));
+                button.onClick.AddListener(() =>_menu.StartGame(_numberLevel));
                 break;
         }
     }    
