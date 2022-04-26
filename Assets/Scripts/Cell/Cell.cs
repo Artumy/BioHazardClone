@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -9,7 +10,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private CellType _type;
     [SerializeField] private int _capacity;
     [SerializeField] private int _maxCapacity;
-    [SerializeField] private float _repeatTime = 1f;
+    [SerializeField] private float _speedProduction = 1f;
     [SerializeField] private GameObject _prefabEntity;
 
     [SerializeField] private Color _playerColor;
@@ -38,7 +39,8 @@ public class Cell : MonoBehaviour
 
     private void Awake()
     {
-        _currentTime = _repeatTime;
+        _speedProduction = LevelSetting.Settings[SceneManager.GetActiveScene().buildIndex - 1].SpeedProduction;
+        _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -56,7 +58,7 @@ public class Cell : MonoBehaviour
             if (_currentTime <= 0)
             {
                 ProduceEntity();
-                _currentTime = _repeatTime;
+                _currentTime = _speedProduction;
             }
         }
     }
