@@ -10,7 +10,7 @@ public class Entity : MonoBehaviour
 
     private void Start()
     {
-        _speed = LevelSetting.Settings[SceneManager.GetActiveScene().buildIndex - 1].SpeedEntity;
+        _speed = LevelSetting.Settings[gameObject.scene.buildIndex - 1].SpeedEntity;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         if (gameObject.tag == "Player")
             _spriteRenderer.color = Color.green;

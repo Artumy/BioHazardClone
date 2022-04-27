@@ -21,9 +21,6 @@ public class Cell : MonoBehaviour
     private float _radius;
     private float _currentTime;
 
-
-    public CellType Type => _type;
-
     public int Capacity
     {
         get => _capacity;
@@ -36,10 +33,22 @@ public class Cell : MonoBehaviour
         }
     }
 
+    public int MaxCapacity
+    {
+        get => _maxCapacity;
+        set => _maxCapacity = value;
+    }
+
+    public CellType Type
+    {
+        get => _type;
+        set => _type = value;
+    }
+
 
     private void Awake()
     {
-        _speedProduction = LevelSetting.Settings[SceneManager.GetActiveScene().buildIndex - 1].SpeedProduction;
+        _speedProduction = LevelSetting.Settings[gameObject.scene.buildIndex - 1].SpeedProduction;
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();

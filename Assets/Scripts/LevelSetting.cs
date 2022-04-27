@@ -12,7 +12,7 @@ public static class LevelSetting
 
     public static void LoadSetting()
     {
-        using (var reader = new StreamReader("LevelSetting.bin"))
+        using (var reader = new StreamReader("Assets/LevelSetting.bin"))
         {
             while (!reader.EndOfStream)
             {
@@ -24,7 +24,7 @@ public static class LevelSetting
 
     public static void SaveSetting()
     {
-        using (var writer = new StreamWriter(File.Open("LevelSetting.bin", FileMode.Create)))
+        using (var writer = new StreamWriter(File.Open("Assets/LevelSetting.bin", FileMode.Create)))
         {
             foreach (var setting in Settings)
                 writer.WriteLine(setting.SpeedEntity + " " + setting.SpeedProduction);

@@ -202,10 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f17da77baca9c4dbe0869f7d8cd662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
   _capacity: 50
   _maxCapacity: 10
-  _repeatTime: 1
+  _speedProduction: 1
   _prefabEntity: {fileID: 1286391245039092086, guid: eedb640f643506243a21aecc4a3203e1, type: 3}
   _playerColor: {r: 0.18431373, g: 1, b: 0, a: 1}
   _enemyColor: {r: 0.87058824, g: 0.21176471, b: 0.011764706, a: 0.92941177}
