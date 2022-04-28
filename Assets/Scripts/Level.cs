@@ -4,8 +4,9 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     [SerializeField] private GameObject _prefabCell;
+    [SerializeField] private int _numberLevel;
 
-    private List<GameObject> _cells = new List<GameObject>();
+    public int NumberLevel => _numberLevel;
 
     public GameObject CreateCell()
     {

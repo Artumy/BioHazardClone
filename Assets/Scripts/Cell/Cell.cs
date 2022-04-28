@@ -48,7 +48,13 @@ public class Cell : MonoBehaviour
 
     private void Awake()
     {
-        _speedProduction = LevelSetting.Settings[gameObject.scene.buildIndex - 1].SpeedProduction;
+        var numberLevel = FindObjectOfType<Level>().NumberLevel;
+        if(numberLevel == gameObject.scene.buildIndex - 1)
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+        else
+        {
+            _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == numberLevel).SpeedProduction;
+        }    
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();

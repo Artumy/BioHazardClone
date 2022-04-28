@@ -10,6 +10,7 @@ public class EndGame : MonoBehaviour
 
     private Cell[] _cells;
     private Canvas _canvas;
+
     private void Start()
     {
         InvokeRepeating("CheckCell", 5f, 3f);

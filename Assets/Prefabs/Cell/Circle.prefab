@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f17da77baca9c4dbe0869f7d8cd662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _capacity: 50
   _maxCapacity: 10
   _speedProduction: 1
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba98ed2fa8170c946be43385f1ebb071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lineDirection: {fileID: 0}
+  _lineDirection: {fileID: 3768200518379357386, guid: b1ad940810912564a88c2f163bdce7ce, type: 3}
 --- !u!58 &4349190175242104026
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using System.IO;
 
 public static class LevelSetting
 {
-    public static List<PairSpeed> Settings = new List<PairSpeed>();
+    public static List<SpeedSetting> Settings = new List<SpeedSetting>();
 
     static LevelSetting()
     {
@@ -17,7 +17,7 @@ public static class LevelSetting
             while (!reader.EndOfStream)
             {
                 var values = reader.ReadLine().Split(' ');
-                Settings.Add(new PairSpeed(float.Parse(values[0]), float.Parse(values[1])));
+                Settings.Add(new SpeedSetting(int.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2])));
             }
         }
     }
@@ -27,7 +27,7 @@ public static class LevelSetting
         using (var writer = new StreamWriter(File.Open("Assets/LevelSetting.bin", FileMode.Create)))
         {
             foreach (var setting in Settings)
-                writer.WriteLine(setting.SpeedEntity + " " + setting.SpeedProduction);
+                writer.WriteLine(setting.NumberLevel + " " + setting.SpeedEntity + " " + setting.SpeedProduction);
         }
     }
 }

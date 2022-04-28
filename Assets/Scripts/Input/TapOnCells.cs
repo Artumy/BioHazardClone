@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class TapOnCells : MonoBehaviour
 {
-    [SerializeField] private DrawLineDirection _lineDirection;
+    private DrawLineDirection _lineDirection;
 
     private SpriteRenderer _spriteRenderer;
     private Cell _cell;
@@ -14,6 +14,7 @@ public class TapOnCells : MonoBehaviour
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _lineDirection = FindObjectOfType<DrawLineDirection>();
         _cell = GetComponent<Cell>();
     }
 

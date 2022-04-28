@@ -15,7 +15,7 @@ public class ArtificialIntelligence : MonoBehaviour
             var cells = FindObjectsOfType<Cell>();
             var enemyCells = cells.Where(cell => cell.Type == Cell.CellType.Enemy).ToArray();
             var otherCells = cells.Where(cell => cell.Type != Cell.CellType.Enemy).ToArray();
-            if (enemyCells.Length == 0)
+            if (enemyCells.Length == 0 || otherCells.Length == 0)
                 return;
 
             var indexEnemyCells = Random.Range(0, enemyCells.Length);
