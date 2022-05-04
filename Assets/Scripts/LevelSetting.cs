@@ -5,11 +5,6 @@ public static class LevelSetting
 {
     public static List<SpeedSetting> Settings = new List<SpeedSetting>();
 
-    static LevelSetting()
-    {
-        LoadSetting();
-    }
-
     public static void LoadSetting()
     {
         using (var reader = new StreamReader("Assets/LevelSetting.bin"))
@@ -17,7 +12,10 @@ public static class LevelSetting
             while (!reader.EndOfStream)
             {
                 var values = reader.ReadLine().Split(' ');
-                Settings.Add(new SpeedSetting(int.Parse(values[0]), float.Parse(values[1]), float.Parse(values[2])));
+                int.TryParse(values[0], out int value);
+                float.TryParse(values[1], out float value2);
+                float.TryParse(values[2], out float value3);
+                Settings.Add(new SpeedSetting(value, value2, value3));
             }
         }
     }
