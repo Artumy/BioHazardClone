@@ -8,5 +8,7 @@ public class InitialData : MonoBehaviour
     {
         if(LevelSetting.Settings.Count == 0)
             LevelSetting.LoadSetting();
+        if(Records.Record.Count == 0)
+            Records.LoadSetting();
     }
 }

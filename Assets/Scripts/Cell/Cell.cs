@@ -21,6 +21,8 @@ public class Cell : MonoBehaviour
     private float _radius;
     private float _currentTime;
 
+    private int numberLevel;
+
     public int Capacity
     {
         get => _capacity;
@@ -48,13 +50,13 @@ public class Cell : MonoBehaviour
 
     private void Awake()
     {
-        var numberLevel = FindObjectOfType<Level>().NumberLevel;
-        if(numberLevel == gameObject.scene.buildIndex - 1)
+        numberLevel = FindObjectOfType<Level>().NumberLevel;
+        if (numberLevel == gameObject.scene.buildIndex - 1)
             _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
         else
         {
             _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == numberLevel).SpeedProduction;
-        }    
+        }
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -89,6 +91,7 @@ public class Cell : MonoBehaviour
 
             _capacity += 1;
             Destroy(collision.gameObject);
+            SetColor();
             return;
         }
 
@@ -109,24 +112,37 @@ public class Cell : MonoBehaviour
         if (_type == CellType.None)
         {
             _spriteRenderer.color = _noneColor;
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
         }
         else if (_type == CellType.Player)
         {
             _spriteRenderer.color = _playerColor;
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
         }
         else
         {
             _spriteRenderer.color = _enemyColor;
+            SetDifficulty();
+        }
+    }
+
+    private void SetDifficulty()
+    {
+        if (LevelSetting.LevelOfDifficult == 1)
+        {
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+        }
+        if (LevelSetting.LevelOfDifficult == 2)
+        {
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction - 0.2f;
+        }
+        if (LevelSetting.LevelOfDifficult == 3)
+        {
+            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction - 0.4f;
         }
     }
 
     private void ProduceEntity() => Capacity++;
-
-    //private RaycastHit2D[] GetHits(Vector3 point)
-    //{
-    //    var directionRay = (Vector2)(point - transform.position);
-    //    return Physics2D.RaycastAll(transform.position, directionRay, directionRay.magnitude);
-    //}
 
     private List<RaycastHit2D> GetHits(Vector3 point)
     {
@@ -148,19 +164,19 @@ public class Cell : MonoBehaviour
         // Set colliders from two borders of the circle
         if ((directionRay.x < 0 && directionRay.y < 0) || (directionRay.x > 0 && directionRay.y > 0))
         {
-            hit = GetRayColliders(startRayPosition.x - 0.5f, startRayPosition.y + 0.5f, directionRay);
+            hit = GetRayColliders(startRayPosition.x - _radius, startRayPosition.y + _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
-            hit = GetRayColliders(startRayPosition.x + 0.5f, startRayPosition.y - 0.5f, directionRay);
+            hit = GetRayColliders(startRayPosition.x + _radius, startRayPosition.y - _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
         }
         else
         {
-            hit = GetRayColliders(startRayPosition.x - 0.5f, startRayPosition.y - 0.5f, directionRay);
+            hit = GetRayColliders(startRayPosition.x - _radius, startRayPosition.y - _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
-            hit = GetRayColliders(startRayPosition.x + 0.5f, startRayPosition.y + 0.5f, directionRay);
+            hit = GetRayColliders(startRayPosition.x + _radius, startRayPosition.y + _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
         }
