@@ -8,12 +8,6 @@ public class LevelSettingWindow : EditorWindow
     private float _speedProduction;
     private List<SpeedSetting> _settings = new List<SpeedSetting>();
 
-    [MenuItem("Window/LevelSetting")]
-    private static void ShowWindow()
-    {
-        EditorWindow.GetWindow(typeof(LevelSettingWindow));
-    }
-
     private void Awake()
     {
         _settings = LevelSetting.Settings;
@@ -34,4 +28,11 @@ public class LevelSettingWindow : EditorWindow
     {
         LevelSetting.SaveSetting();
     }
+
+    [MenuItem("Window/LevelSetting")]
+    private static void ShowWindow()
+    {
+        EditorWindow.GetWindow(typeof(LevelSettingWindow));
+    }
+
 }

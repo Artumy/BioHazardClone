@@ -13,6 +13,7 @@ public class LevelTimer : MonoBehaviour
         {
             if (cell[i].Type == Cell.CellType.Enemy) return;
         }
+
         if (Records.Record[levelNumber].Minute >= (int)Time.timeSinceLevelLoad / 60)
         {
             if (Records.Record[levelNumber].Second >= (int)Time.timeSinceLevelLoad % 60)
@@ -20,6 +21,7 @@ public class LevelTimer : MonoBehaviour
                 SaveRecords(levelNumber);
             }
         }
+
         if (Records.Record[levelNumber].Second == 0 && Records.Record[levelNumber].Minute == 0)
             SaveRecords(levelNumber);
     }

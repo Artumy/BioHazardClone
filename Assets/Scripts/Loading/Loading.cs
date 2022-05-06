@@ -14,7 +14,7 @@ public class Loading : MonoBehaviour
         StartCoroutine(LoadAsync());
     }
 
-    IEnumerator LoadAsync()
+    private IEnumerator LoadAsync()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("MainMenu");
 

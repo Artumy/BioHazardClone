@@ -6,7 +6,6 @@ using UnityEngine;
 public class DrawLineDirection : MonoBehaviour
 {
     private LineRenderer _line;
-
     private float _cameraPositionZ = 10;
     private int _endPoint = 1;
 
@@ -36,5 +35,4 @@ public class DrawLineDirection : MonoBehaviour
     {
         _line.enabled = false;
     }
-
 }

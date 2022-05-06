@@ -26,6 +26,7 @@ public class EndGame : MonoBehaviour
             if (capturedCells[i].Type != capturedCells[i + 1].Type)
                 return;
         }
+
         if (capturedCells[0].Type == Cell.CellType.Player)
         {
             _nextLevel.SetActive(true);

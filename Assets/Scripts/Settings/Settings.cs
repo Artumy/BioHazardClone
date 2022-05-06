@@ -31,6 +31,7 @@ public class Settings : MonoBehaviour
                 _difficult.SetActive(true);
                 break;
         }
+
         LevelSetting.LevelOfDifficult = (int)_slider.value;
     }
 }

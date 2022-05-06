@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ShowRecords : MonoBehaviour
 {
     [SerializeField] private List<Text> _text = new List<Text>();
-    void Start()
+
+    private void Start()
     {
         for (int i = 0; i < _text.Count; i++)
         {

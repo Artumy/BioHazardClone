@@ -60,6 +60,7 @@ public class Cell : MonoBehaviour
         {
             _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == _numberLevel).SpeedProduction;
         }
+
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -109,6 +110,7 @@ public class Cell : MonoBehaviour
             }
         }
     }
+
     private void SetColor()
     {
         if (_type == CellType.None)
@@ -134,10 +136,12 @@ public class Cell : MonoBehaviour
         {
             _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         }
+
         if (LevelSetting.LevelOfDifficult == 2)
         {
             _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.2f;
         }
+
         if (LevelSetting.LevelOfDifficult == 3)
         {
             _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.4f;
@@ -158,6 +162,7 @@ public class Cell : MonoBehaviour
         hit = Physics2D.RaycastAll(startRayPosition, directionRay, directionRay.magnitude);
         for (int i = 0; i < hit.Length; i++)
             hits.Add(hit[i]);
+
         directionRay = (Vector2)(hit[hit.Length - 1].transform.position - transform.position);
 
         // Set the target collider
@@ -169,6 +174,7 @@ public class Cell : MonoBehaviour
             hit = GetRayColliders(startRayPosition.x - _radius, startRayPosition.y + _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
+
             hit = GetRayColliders(startRayPosition.x + _radius, startRayPosition.y - _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
@@ -178,6 +184,7 @@ public class Cell : MonoBehaviour
             hit = GetRayColliders(startRayPosition.x - _radius, startRayPosition.y - _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
+
             hit = GetRayColliders(startRayPosition.x + _radius, startRayPosition.y + _radius, directionRay);
             for (int i = 0; i < hit.Length; i++)
                 hits.Add(hit[i]);
@@ -191,7 +198,6 @@ public class Cell : MonoBehaviour
                 hits.RemoveAt(i);
                 i--;
             }
-
         }
 
         // Add target in the main 
