@@ -6,9 +6,9 @@ public class ArtificialIntelligence : MonoBehaviour
 {
     [SerializeField] private float _time;
 
-    private float _currentTime;
+    private float _currentTime = 0f;
 
-    void Update()
+    private void Update()
     {
         if(_currentTime <= 0)
         {

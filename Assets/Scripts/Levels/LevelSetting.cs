@@ -7,11 +7,9 @@ public static class LevelSetting
     public static List<SpeedSetting> Settings = new List<SpeedSetting>();
     public static int LevelOfDifficult;
 
-
     public static void LoadSetting()
     {
         TextAsset data = Resources.Load("LevelSetting") as TextAsset;
-
         var values = data.text.Split(new char[] { ' ', '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         for (int i = 0; i < values.Length / 3; i++)
         {

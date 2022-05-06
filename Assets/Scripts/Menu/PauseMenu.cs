@@ -6,16 +6,10 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _pauseWindow;
     [SerializeField] private GameObject _pauseButton;
 
-    //[SerializeField] private GameObject _nextLevelButton;
-
     private Canvas _canvas;
 
     public void Start()
     {
-        //var index = SceneManager.GetActiveScene().buildIndex;
-        //if (index == SceneManager.sceneCount - 1)
-        //    _nextLevelButton.SetActive(false);
-
         _canvas = FindObjectOfType<Canvas>();
     }
 

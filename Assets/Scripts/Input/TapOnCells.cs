@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Cell))]
@@ -7,13 +5,10 @@ using UnityEngine;
 public class TapOnCells : MonoBehaviour
 {
     private DrawLineDirection _lineDirection;
-
-    private SpriteRenderer _spriteRenderer;
     private Cell _cell;
 
     private void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _lineDirection = FindObjectOfType<DrawLineDirection>();
         _cell = GetComponent<Cell>();
     }

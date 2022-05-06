@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(CircleCollider2D))]
@@ -20,8 +18,14 @@ public class Cell : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float _radius;
     private float _currentTime;
+    private int _numberLevel;
 
-    private int numberLevel;
+    public enum CellType
+    {
+        Player,
+        Enemy,
+        None
+    }
 
     public int Capacity
     {
@@ -47,15 +51,14 @@ public class Cell : MonoBehaviour
         set => _type = value;
     }
 
-
     private void Awake()
     {
-        numberLevel = FindObjectOfType<Level>().NumberLevel;
-        if (numberLevel == gameObject.scene.buildIndex - 1)
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+        _numberLevel = FindObjectOfType<Level>().NumberLevel;
+        if (_numberLevel == gameObject.scene.buildIndex - 1)
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         else
         {
-            _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == numberLevel).SpeedProduction;
+            _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == _numberLevel).SpeedProduction;
         }
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
@@ -65,19 +68,6 @@ public class Cell : MonoBehaviour
     private void Start()
     {
         SetColor();
-    }
-
-    private void Update()
-    {
-        if (_type != CellType.None)
-        {
-            _currentTime -= Time.deltaTime;
-            if (_currentTime <= 0)
-            {
-                ProduceEntity();
-                _currentTime = _speedProduction;
-            }
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -107,17 +97,29 @@ public class Cell : MonoBehaviour
         Destroy(collision.gameObject);
     }
 
+    private void Update()
+    {
+        if (_type != CellType.None)
+        {
+            _currentTime -= Time.deltaTime;
+            if (_currentTime <= 0)
+            {
+                ProduceEntity();
+                _currentTime = _speedProduction;
+            }
+        }
+    }
     private void SetColor()
     {
         if (_type == CellType.None)
         {
             _spriteRenderer.color = _noneColor;
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         }
         else if (_type == CellType.Player)
         {
             _spriteRenderer.color = _playerColor;
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         }
         else
         {
@@ -130,15 +132,15 @@ public class Cell : MonoBehaviour
     {
         if (LevelSetting.LevelOfDifficult == 1)
         {
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction;
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         }
         if (LevelSetting.LevelOfDifficult == 2)
         {
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction - 0.2f;
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.2f;
         }
         if (LevelSetting.LevelOfDifficult == 3)
         {
-            _speedProduction = LevelSetting.Settings[numberLevel].SpeedProduction - 0.4f;
+            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.4f;
         }
     }
 
@@ -224,12 +226,5 @@ public class Cell : MonoBehaviour
                     Physics2D.IgnoreCollision(entityCollider, hits[j].collider);
             }
         }
-    }
-
-    public enum CellType
-    {
-        Player,
-        Enemy,
-        None
     }
 }

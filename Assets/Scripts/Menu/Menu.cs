@@ -16,7 +16,6 @@ public class Menu : MonoBehaviour
     public void StartGame(int indexScene)
     {
         SceneManager.LoadScene(indexScene);
-        //_levels[currentLevel].SetActive(true);
         _menu.SetActive(false);
     }
 

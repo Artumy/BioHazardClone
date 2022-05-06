@@ -24,7 +24,6 @@ public class DrawLineDirection : MonoBehaviour
                     new Vector3(Input.mousePosition.x, Input.mousePosition.y, _cameraPositionZ)));
 
         _line.enabled = true;
-
     }
 
     public void DrawLine()

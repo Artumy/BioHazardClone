@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Entity : MonoBehaviour
@@ -14,9 +13,7 @@ public class Entity : MonoBehaviour
         if (numberLevel == gameObject.scene.buildIndex - 1)
             _speed = LevelSetting.Settings[numberLevel].SpeedEntity;
         else
-        {
             _speed = LevelSetting.Settings.Find(x => x.NumberLevel == numberLevel).SpeedEntity;
-        }
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         if (gameObject.tag == "Player")

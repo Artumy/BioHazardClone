@@ -6,7 +6,6 @@ public static class Records
 {
     public static List<RecordSettings> Record = new List<RecordSettings>();
 
-
     public static void LoadSetting()
     {
         Record.Clear();
