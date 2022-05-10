@@ -15,6 +15,7 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color _enemyColor;
     [SerializeField] private Color _noneColor;
 
+    private const float CoefficientOfDifficult = 0.01f;
     private SpriteRenderer _spriteRenderer;
     private float _radius;
     private float _currentTime;
@@ -64,6 +65,7 @@ public class Cell : MonoBehaviour
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     private void Start()
@@ -132,20 +134,7 @@ public class Cell : MonoBehaviour
 
     private void SetDifficulty()
     {
-        if (LevelSetting.LevelOfDifficult == 1)
-        {
-            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
-        }
-
-        if (LevelSetting.LevelOfDifficult == 2)
-        {
-            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.2f;
-        }
-
-        if (LevelSetting.LevelOfDifficult == 3)
-        {
-            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - 0.4f;
-        }
+        _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction - LevelSetting.LevelOfDifficult * CoefficientOfDifficult;
     }
 
     private void ProduceEntity() => Capacity++;
