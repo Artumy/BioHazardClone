@@ -9,7 +9,7 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private int _numberLevel;
 
-    private Menu _menu;
+    private LevelWindow _levelWindow;
     private State _state;
 
     public enum State
@@ -22,7 +22,7 @@ public class ButtonLevel : MonoBehaviour
 
     private void Awake()
     {
-        _menu = FindObjectOfType<Menu>();
+        _levelWindow = FindObjectOfType<LevelWindow>();
         var openLevel = PlayerPrefs.GetInt("OpenLevel");
         if (openLevel == 0)
             openLevel = 1;
@@ -33,15 +33,15 @@ public class ButtonLevel : MonoBehaviour
         {
             case State.Close:
                 _image.sprite = _closeSprite;
-                button.onClick.AddListener(_menu.Notify);
+                button.onClick.AddListener(_levelWindow.Notify);
                 break;
             case State.Open:
                 _image.enabled = false;
-                button.onClick.AddListener(() => _menu.StartGame(_numberLevel));
+                button.onClick.AddListener(() => _levelWindow.StartGame(_numberLevel));
                 break;
             case State.Passed:
                 _image.sprite = _passedSprite;
-                button.onClick.AddListener(() =>_menu.StartGame(_numberLevel));
+                button.onClick.AddListener(() => _levelWindow.StartGame(_numberLevel));
                 break;
         }
     }    

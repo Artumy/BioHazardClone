@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Settings : MonoBehaviour
+public class SettingsWindow : Window
 {
+    [SerializeField] private Button _backButton;
     [SerializeField] private Slider _slider;
     [SerializeField] private GameObject _easy;
     [SerializeField] private GameObject _middle;
@@ -11,6 +12,11 @@ public class Settings : MonoBehaviour
     private void Start()
     {
         _slider.onValueChanged.AddListener(delegate { ActiveLevelOfDifficult(); });
+    }
+
+    public override void Initialize()
+    {
+        _backButton.onClick.AddListener(() => WindowsManager.Show<MenuWindow>());
     }
 
     private void ActiveLevelOfDifficult()

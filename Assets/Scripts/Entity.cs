@@ -16,7 +16,7 @@ public class Entity : MonoBehaviour
             _speed = LevelSetting.Settings.Find(x => x.NumberLevel == numberLevel).SpeedEntity;
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        if (gameObject.tag == "Player")
+        if (CompareTag("Player"))
             _spriteRenderer.color = Color.green;
         else
             _spriteRenderer.color = Color.red;

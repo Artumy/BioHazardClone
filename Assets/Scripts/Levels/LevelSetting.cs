@@ -22,7 +22,7 @@ public static class LevelSetting
 
     public static void SaveSetting()
     {
-        using (var writer = new StreamWriter(File.Open("Resources/LevelSetting", FileMode.Create)))
+        using (var writer = new StreamWriter(File.Open("Assets/Resources/LevelSetting.txt", FileMode.Create)))
         {
             foreach (var setting in Settings)
                 writer.WriteLine(setting.NumberLevel + " " + setting.SpeedEntity + " " + setting.SpeedProduction);

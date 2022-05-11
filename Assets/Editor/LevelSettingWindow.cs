@@ -15,6 +15,9 @@ public class LevelSettingWindow : EditorWindow
 
     private void OnGUI()
     {
+        if(_settings.Count == 0)
+            LevelSetting.LoadSetting();
+
         for(int i = 0; i < _settings.Count; i++)
         { 
             GUILayout.Label("Level " + (_settings[i].NumberLevel), EditorStyles.boldLabel);

@@ -77,7 +77,7 @@ public class Cell : MonoBehaviour
     {
         if (_capacity == 0)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collision.CompareTag("Player"))
                 _type = CellType.Player;
             else
                 _type = CellType.Enemy;
@@ -88,7 +88,7 @@ public class Cell : MonoBehaviour
             return;
         }
 
-        if (_type.ToString() == collision.gameObject.tag)
+        if (collision.CompareTag(_type.ToString()))
             _capacity += 1;
         else
             _capacity -= 1;

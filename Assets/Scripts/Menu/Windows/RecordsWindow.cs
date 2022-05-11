@@ -1,9 +1,10 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShowRecords : MonoBehaviour
+public class RecordsWindow : Window
 {
+    [SerializeField] private Button _backButton;
     [SerializeField] private List<Text> _text = new List<Text>();
 
     private void Start()
@@ -18,5 +19,10 @@ public class ShowRecords : MonoBehaviour
 
             _text[i].text = Records.Record[i].Minute + ":" + second;
         }
+    }
+
+    public override void Initialize()
+    {
+        _backButton.onClick.AddListener(() => WindowsManager.Show<MenuWindow>());
     }
 }
