@@ -12,6 +12,7 @@ public class SettingsWindow : Window
     private void Start()
     {
         _slider.onValueChanged.AddListener(delegate { ActiveLevelOfDifficult(); });
+        _slider.value = LevelSetting.LevelOfDifficult;
     }
 
     public override void Initialize()

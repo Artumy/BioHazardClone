@@ -21,8 +21,8 @@ public class LevelSettingWindow : EditorWindow
         for(int i = 0; i < _settings.Count; i++)
         { 
             GUILayout.Label("Level " + (_settings[i].NumberLevel), EditorStyles.boldLabel);
-            _speedEntity = EditorGUILayout.Slider("Entity Speed", _settings[i].SpeedEntity, 0, 10);
-            _speedProduction = EditorGUILayout.Slider("Production Speed", _settings[i].SpeedProduction, 0, 10);
+            _speedEntity = EditorGUILayout.Slider("Entity Speed", _settings[i].SpeedEntity, 0, 4);
+            _speedProduction = EditorGUILayout.Slider("Production Speed", _settings[i].SpeedProduction, 0, 4);
             _settings[i] = new SpeedSetting(_settings[i].NumberLevel, _speedEntity,_speedProduction);
         }            
     }

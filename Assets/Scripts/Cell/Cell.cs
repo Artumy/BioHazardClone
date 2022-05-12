@@ -8,14 +8,16 @@ public class Cell : MonoBehaviour
     [SerializeField] private CellType _type;
     [SerializeField] private int _capacity;
     [SerializeField] private int _maxCapacity;
-    [SerializeField] private float _speedProduction = 1f;
+    [SerializeField] private float _speedProduction;
     [SerializeField] private GameObject _prefabEntity;
-
+    [SerializeField] private Level _level;
+ 
     [SerializeField] private Color _playerColor;
     [SerializeField] private Color _enemyColor;
     [SerializeField] private Color _noneColor;
 
-    private const float CoefficientOfDifficult = 0.01f;
+    private const float CoefficientOfDifficult = 0.05f;
+
     private SpriteRenderer _spriteRenderer;
     private float _radius;
     private float _currentTime;
@@ -54,18 +56,11 @@ public class Cell : MonoBehaviour
 
     private void Awake()
     {
-        _numberLevel = FindObjectOfType<Level>().NumberLevel;
-        if (_numberLevel == gameObject.scene.buildIndex - 1)
-            _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
-        else
-        {
-            _speedProduction = LevelSetting.Settings.Find(x => x.NumberLevel == _numberLevel).SpeedProduction;
-        }
-
+        _numberLevel = _level.NumberLevel - 1;
+        _speedProduction = LevelSetting.Settings[_numberLevel].SpeedProduction;
         _currentTime = _speedProduction;
         _radius = GetComponent<CircleCollider2D>().radius;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     private void Start()

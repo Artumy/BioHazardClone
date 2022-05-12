@@ -7,15 +7,17 @@ public class EndGame : MonoBehaviour
     [SerializeField] private GameObject _endMenu;
     [SerializeField] private GameObject _nextLevel;
     [SerializeField] private GameObject _nextLevelBlocked;
+    [SerializeField] private Cell[] _cells;
+    [SerializeField] private Canvas _canvas;
 
-    private Cell[] _cells;
-    private Canvas _canvas;
-
+    private int _savelevelNumber;
+    private void Awake()
+    {
+        _savelevelNumber = PlayerPrefs.GetInt("OpenLevel");
+    }
     private void Start()
     {
         InvokeRepeating("CheckCell", 5f, 3f);
-        _cells = FindObjectsOfType<Cell>();
-        _canvas = FindObjectOfType<Canvas>();
     }
 
     private void CheckCell()
@@ -30,7 +32,8 @@ public class EndGame : MonoBehaviour
         if (capturedCells[0].Type == Cell.CellType.Player)
         {
             _nextLevel.SetActive(true);
-            PlayerPrefs.SetInt("OpenLevel", SceneManager.GetActiveScene().buildIndex + 1);
+            if (_savelevelNumber < SceneManager.GetActiveScene().buildIndex + 1)
+                PlayerPrefs.SetInt("OpenLevel", SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
             _nextLevelBlocked.SetActive(true);

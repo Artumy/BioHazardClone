@@ -18,6 +18,7 @@ public static class LevelSetting
             float.TryParse(values[3 * i + 2], out float value3);
             Settings.Add(new SpeedSetting(value, value2, value3));
         }
+        LevelOfDifficult = 1;
     }
 
     public static void SaveSetting()

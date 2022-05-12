@@ -8,8 +8,8 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField] private Sprite _passedSprite; 
     [SerializeField] private Image _image;
     [SerializeField] private int _numberLevel;
+    [SerializeField] private LevelWindow _levelWindow;
 
-    private LevelWindow _levelWindow;
     private State _state;
 
     public enum State
@@ -22,7 +22,6 @@ public class ButtonLevel : MonoBehaviour
 
     private void Awake()
     {
-        _levelWindow = FindObjectOfType<LevelWindow>();
         var openLevel = PlayerPrefs.GetInt("OpenLevel");
         if (openLevel == 0)
             openLevel = 1;

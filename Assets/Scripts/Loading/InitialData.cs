@@ -9,5 +9,6 @@ public class InitialData : MonoBehaviour
 
         if(Records.Record.Count == 0)
             Records.LoadSetting();
+        LevelSetting.SaveSetting();
     }
 }

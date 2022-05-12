@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class ArtificialIntelligence : MonoBehaviour
 {
     [SerializeField] private float _time;
+    [SerializeField] private List<Cell> _cells = new List<Cell>();
 
     private float _currentTime = 0f;
 
@@ -11,9 +13,8 @@ public class ArtificialIntelligence : MonoBehaviour
     {
         if(_currentTime <= 0)
         {
-            var cells = FindObjectsOfType<Cell>();
-            var enemyCells = cells.Where(cell => cell.Type == Cell.CellType.Enemy).ToArray();
-            var otherCells = cells.Where(cell => cell.Type != Cell.CellType.Enemy).ToArray();
+            var enemyCells = _cells.Where(cell => cell.Type == Cell.CellType.Enemy).ToArray();
+            var otherCells = _cells.Where(cell => cell.Type != Cell.CellType.Enemy).ToArray();
             if (enemyCells.Length == 0 || otherCells.Length == 0)
                 return;
 

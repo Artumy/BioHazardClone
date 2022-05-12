@@ -1,15 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelTimer : MonoBehaviour
 {
+    [SerializeField] private List<Cell> _cells = new List<Cell>();
     private void Start()
     {
-        int levelNumber = SceneManager.GetActiveScene().buildIndex - 1;
-        var cell = FindObjectsOfType<Cell>();
-        for (int i = 0; i < cell.Length; i++)
+        var levelNumber = SceneManager.GetActiveScene().buildIndex - 1;
+        for (int i = 0; i < _cells.Count; i++)
         {
-            if (cell[i].Type == Cell.CellType.Enemy) return;
+            if (_cells[i].Type == Cell.CellType.Enemy) return;
         }
 
         if (Records.Record[levelNumber].Minute >= (int)Time.timeSinceLevelLoad / 60)
