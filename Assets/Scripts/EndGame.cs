@@ -15,9 +15,9 @@ public class EndGame : MonoBehaviour
     {
         _savelevelNumber = PlayerPrefs.GetInt("OpenLevel");
     }
-    private void Start()
+    private void Update()
     {
-        InvokeRepeating("CheckCell", 5f, 3f);
+        CheckCell();
     }
 
     private void CheckCell()
@@ -43,7 +43,6 @@ public class EndGame : MonoBehaviour
 
     private void FinishGame()
     {
-        CancelInvoke();
         _endMenu.SetActive(true);
         _canvas.sortingOrder = 10;
     }

@@ -8,13 +8,7 @@ public class PauseWindow : Window
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _menuButton;
-
-    private Canvas _canvas;
-
-    private void Start()
-    {
-        _canvas = FindObjectOfType<Canvas>();
-    }
+    [SerializeField] private Canvas _canvas;
 
     private void Update()
     {
